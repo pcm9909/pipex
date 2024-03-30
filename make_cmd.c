@@ -6,7 +6,7 @@
 /*   By: chunpark <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:10:40 by chunpark          #+#    #+#             */
-/*   Updated: 2024/03/30 15:55:30 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/03/30 18:06:24 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ char	*get_cmd_path(char *cmd, char *path_env_var)
 		cmd_path = NULL;
 		i++;
 	}
-	check_cmd(cmd_path);
 	return (cmd_path);
 }
