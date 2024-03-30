@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chunpark <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/30 14:58:52 by chunpark          #+#    #+#              #
-#    Updated: 2024/03/30 14:58:55 by chunpark         ###   ########.fr        #
+#    Updated: 2024/03/31 00:51:22 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ CC = cc
 CCFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 SRCS =	pipex.c \
-        check.c \
         make_cmd.c \
         execve.c 
 
@@ -28,7 +27,8 @@ LIBFT_SRCS =	ft_split.c \
                 ft_strncmp.c \
                 ft_substr.c \
                 ft_strdup.c \
-                ft_memcpy.c
+                ft_memcpy.c	\
+				ft_putstr_fd.c
 
 OBJS = $(SRCS:.c=.o)
 LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
@@ -48,17 +48,17 @@ $(NAME) : $(OBJS) $(LIBFT_OBJS) $(HEADER)
 			@echo "$< compiled!"
 
 clean : 
-			@echo "Removing object files..."
+			@echo "\nRemoving object files..."
 			@rm -f $(OBJS) $(LIBFT_OBJS)
 			@echo "Object files removed!\n"
 
 
 fclean : clean
-			@echo "Removing $(NAME)..."
+			@echo "\nRemoving $(NAME)..."
 			@rm -f $(NAME)
 			 @echo "$(NAME) removed!\n"
 
 re : fclean all
-			@echo "Recompilation completed!"
+			@echo "\nRecompilation completed!\n"
 
 .PHONY : all clean fclean re print

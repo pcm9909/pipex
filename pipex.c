@@ -3,32 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chunpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:14:18 by chunpark          #+#    #+#             */
-/*   Updated: 2024/03/30 19:19:00 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/03/31 01:02:23 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+void error_exit(char *msg)
+{
+	perror(msg);
+	exit(1);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	int		fd[2];
-	int		file[2];
 	pid_t	pid;
 
-	file[0] = open(argv[1], O_RDONLY);
-	file[1] = open(argv[4], O_WRONLY | O_TRUNC);
-	ensure_preconditions(argc, argv[1], argv[4], fd);
-	pid = fork();
-	printf("%d\n", pid);
-	if (pid == 0)
+	if (argc == 5)
 	{
-		execute_child(fd, file, argv[3], envp);
+		if (pipe(fd) == -1)
+			error_exit("pipe() failed\n");
+		pid = fork();
+		if (pid == -1)
+			error_exit("fork() failed\n");
+		if (pid == 0)
+			execute_child(fd, argv[4], argv[3], envp);
+		else if (pid > 0)
+			execute_parent(fd, argv[1], argv[2], envp);
 	}
-	else if (pid > 0)
-		execute_parent(fd, file, argv[2], envp);
 	else
-		check_fork(pid);
+	{
+		ft_putstr_fd("invalid number of argc", 2);
+		exit(1);
+	}
 }

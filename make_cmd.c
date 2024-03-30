@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chunpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:10:40 by chunpark          #+#    #+#             */
-/*   Updated: 2024/03/30 18:06:24 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/03/31 01:06:16 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ char	*get_cmd_path(char *cmd, char *path_env_var)
 		cmd_path = NULL;
 		i++;
 	}
+	ft_free_arr(paths, i);
 	return (cmd_path);
 }
