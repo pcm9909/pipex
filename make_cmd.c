@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:10:40 by chunpark          #+#    #+#             */
-/*   Updated: 2024/03/31 01:06:16 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:38:29 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	check_cmd(char *cmd_path)
 	}
 }
 
-char	*get_cmd_path(char *cmd, char *path_env_var)
+char	*get_cmd_path(char *cmd, char *path)
 {
 	char	**paths;
 	char	*cmd_path;
 	char	*tmp;
 	int		i;
 
-	paths = ft_split(path_env_var, ':');
+	paths = ft_split(path, ':');
 	cmd_path = NULL;
 	i = 0;
 	while (paths[i])
@@ -54,12 +54,15 @@ char	*get_cmd_path(char *cmd, char *path_env_var)
 		tmp = ft_strjoin(paths[i], "/");
 		cmd_path = ft_strjoin(tmp, cmd);
 		free(tmp);
-		if (access(cmd_path, F_OK) != -1)
+		if (access(cmd_path, X_OK) != -1)
 			break ;
 		free(cmd_path);
 		cmd_path = NULL;
 		i++;
 	}
-	ft_free_arr(paths, i);
+	i = 0;
+	while (paths[i])
+		free(paths[i++]);
+	free(paths);
 	return (cmd_path);
 }

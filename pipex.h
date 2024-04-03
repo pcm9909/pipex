@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:16:24 by chunpark          #+#    #+#             */
-/*   Updated: 2024/03/31 01:02:20 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/02 03:06:06 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <errno.h>
 
 // libft
 void	ft_putstr_fd(char *s, int fd);
