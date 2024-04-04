@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:16:24 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/02 03:06:06 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:44:31 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ char	*ft_strdup(const char *s);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 // pipex
-void    error_exit(char *msg);
+void	error_exit(char *msg);
 char	*get_path(char **envp);
 char	*get_cmd_path(char *cmd, char *path_env_var);
-void    execute_child(int *fd, char *file, char *command, char **envp);
-void    execute_parent(int *fd, char *file, char *command, char **envp);
+void	execute_child(int *fd, char *file, char *command, char **envp);
+void	execute_parent(int *fd, char *file, char *command, char **envp);
 #endif

@@ -6,13 +6,13 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:14:18 by chunpark          #+#    #+#             */
-/*   Updated: 2024/03/31 01:02:23 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:43:16 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void error_exit(char *msg)
+void	error_exit(char *msg)
 {
 	perror(msg);
 	exit(1);

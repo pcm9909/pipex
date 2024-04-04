@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:10:40 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/02 11:38:29 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:42:12 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,19 @@ void	check_cmd(char *cmd_path)
 	}
 }
 
-char	*get_cmd_path(char *cmd, char *path)
+char	*check_path(char *cmd)
+{
+	if (cmd[0] == '/')
+	{
+		if (access(cmd, X_OK) != -1)
+			return (ft_strdup(cmd));
+		else
+			return (NULL);
+	}
+	return (NULL);
+}
+
+char	*search_path(char *cmd, char *path)
 {
 	char	**paths;
 	char	*cmd_path;
@@ -60,9 +72,16 @@ char	*get_cmd_path(char *cmd, char *path)
 		cmd_path = NULL;
 		i++;
 	}
-	i = 0;
-	while (paths[i])
-		free(paths[i++]);
-	free(paths);
+	ft_free_arr(paths, i);
 	return (cmd_path);
+}
+
+char	*get_cmd_path(char *cmd, char *path)
+{
+	char	*cmd_path;
+
+	cmd_path = check_path(cmd);
+	if (cmd_path != NULL)
+		return (cmd_path);
+	return (search_path(cmd, path));
 }
