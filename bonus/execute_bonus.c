@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 03:16:48 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/08 03:16:49 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/08 04:49:32 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void execute_child_process(char *command, char **envp, int fd[])
     if ((execve(get_cmd_path(cmd[0], path), cmd, NULL)) == -1)
     {
         free(path);
-        errmsg_command_not_found();
+        errmsg_command_not_found("execve() failed");
     }
 }
 
@@ -68,7 +68,7 @@ void execute_last(char *command, char **envp, int outfile)
         if ((execve(get_cmd_path(cmd[0], path), cmd, NULL)) == -1)
         {
             free(path);
-            errmsg_command_not_found();
+            errmsg_command_not_found("execve() failed");
         }
     }
     else

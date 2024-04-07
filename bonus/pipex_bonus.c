@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 03:17:09 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/08 04:18:20 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/08 04:48:37 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	handle_files(int argc, char **argv, int *infile, int *outfile)
 	{
 		*outfile = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 		if (*outfile == -1)
-			error_exit("open() failed\n");
+			error_exit("open() failed");
 		here_docs(argc, argv[2]);
 		return (3);
 	}
@@ -26,10 +26,10 @@ int	handle_files(int argc, char **argv, int *infile, int *outfile)
 	{
 		*infile = open(argv[1], O_RDONLY);
 		if (*infile == -1)
-			perror("open() failed\n");
+			perror("open() failed");
 		*outfile = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		if (*outfile == -1)
-			error_exit("open() failed\n");
+			error_exit("open() failed");
 		return (2);
 	}
 }
@@ -48,5 +48,5 @@ int	main(int argc, char **argv, char **envp)
 		execute_last(argv[i], envp, outfile);
 	}
 	else
-		errmsg_invailded_input();
+		errmsg_invalid_input("Invalid number of argc");
 }

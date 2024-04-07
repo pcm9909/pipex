@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 03:16:53 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/08 04:20:26 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/08 04:48:48 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,9 @@ void here_docs(int argc, char *limiter)
     int fd[2];
 
     if (argc < 6)
-    {
-        ft_putstr_fd("invalid number of argc", 2);
-        exit(1);
-    }
+        errmsg_invalid_input("Invalid number of argc");
     if (pipe(fd) == -1)
-        error_exit("pipe() failed\n");
+        error_exit("pipe() failed");
     pid = fork();
     if (pid == 0)
         write_to_pipe(fd, limiter);
