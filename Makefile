@@ -6,7 +6,7 @@
 #    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 03:15:38 by chunpark          #+#    #+#              #
-#    Updated: 2024/04/08 03:15:40 by chunpark         ###   ########.fr        #
+#    Updated: 2024/04/08 05:19:21 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 %.o: %.c
 			@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
+all: print $(NAME)
 
 $(NAME): $(OBJS)
 			@clear
@@ -43,9 +43,8 @@ $(NAME): $(OBJS)
 			@echo "@          \033[32mHello pipex\033[0m         @"
 			@echo "@                              @"
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-			@sleep 2
 
-bonus: $(BONUS)
+bonus: print $(BONUS)
 
 $(BONUS): $(BONUS_OBJS)
 			@clear
@@ -62,7 +61,7 @@ $(BONUS): $(BONUS_OBJS)
 			@echo "@       \033[32mHello pipex_bonus\033[0m      @"
 			@echo "@                              @"
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-			@sleep 2
+
 
 clean:		
 			@clear
@@ -102,4 +101,20 @@ re: fclean all
 
 re_bonus: fclean bonus
 
-.PHONY: all bonus clean fclean re re_bonus
+print:
+			@clear
+			@echo "\033[35m♪┏(・o･)┛♪\033[0m"
+			@sleep 0.5
+			@clear
+			@echo "\033[1;33m♪┗(・o･)┓♪\033[0m"
+			@sleep 0.5
+			@clear
+			@echo "\033[35m♪┏(・o･)┛♪\033[0m"
+			@sleep 0.5
+			@clear
+			@echo "\033[1;33m♪┗(・o･)┓♪\033[0m"
+			@sleep 0.5
+
+
+		
+.PHONY: all bonus clean fclean re re_bonus print

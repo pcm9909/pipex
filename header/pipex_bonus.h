@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 03:16:35 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/08 03:16:35 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/08 04:45:57 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include "../utils/get_next_line/get_next_line.h"
 
 //errmsg_bonus.c
-void	errmsg_command_not_found();
+void	errmsg_command_not_found(char *msg);
 void	error_exit(char *msg);
-void	errmsg_invailded_input();
+void	errmsg_invalid_input(char *msg);
 
 //here_doc.c
 void	write_to_pipe(int fd[], char *limiter);
