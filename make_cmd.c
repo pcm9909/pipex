@@ -72,7 +72,10 @@ char	*search_path(char *cmd, char *path)
 		cmd_path = NULL;
 		i++;
 	}
-	ft_free_arr(paths, i);
+	i = 0;
+	while(paths[i])
+		free(paths[i++]);
+	free(paths);
 	return (cmd_path);
 }
 
