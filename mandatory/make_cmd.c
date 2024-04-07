@@ -6,11 +6,11 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:10:40 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/04 18:42:12 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/08 01:18:37 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../header/pipex.h"
 
 char	*get_path(char **envp)
 {

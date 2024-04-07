@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:16:24 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/04 20:14:41 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/07 23:58:03 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,11 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <errno.h>
+# include "../utils/libft/libft.h"
 
-// libft
-void	ft_putstr_fd(char *s, int fd);
-int		ft_count_words(const char *s, char c);
-char	**ft_free_arr(char **arr, size_t i);
-char	**ft_split(char const *s, char c);
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+// errmsg.c
+void error_exit(char *msg);
+void errmsg_exit(char *msg);
 
 // make_cmd.c
 char	*get_path(char **envp);
@@ -44,6 +35,4 @@ char	*get_cmd_path(char *cmd, char *path_env_var);
 void	execute_child(int *fd, char *file, char *command, char **envp);
 void	execute_parent(int *fd, char *file, char *command, char **envp);
 
-//pipex.c
-void	error_exit(char *msg);
 #endif

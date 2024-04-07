@@ -1,64 +1,93 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/30 14:58:52 by chunpark          #+#    #+#              #
-#    Updated: 2024/04/06 16:35:02 by chunpark         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = pipex
-
-CC = cc
-CCFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-
-SRCS =	pipex.c \
-        make_cmd.c \
-        execve.c 
-
-LIBFT_SRCS =	ft_split.c \
-                ft_strjoin.c \
-                ft_strlcat.c \
-                ft_strlcpy.c \
-                ft_strlen.c \
-                ft_strncmp.c \
-                ft_substr.c \
-                ft_strdup.c \
-                ft_memcpy.c	\
-				ft_putstr_fd.c
-
+DIR = ./mandatory
+SRC = errmsg.c execve.c make_cmd.c pipex.c
+SRCS = $(addprefix $(DIR)/, $(SRC))
 OBJS = $(SRCS:.c=.o)
-LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 
-HEADER = pipex.h
+BONUS = pipex_bonus
+BONUS_DIR = ./bonus
+BONUS_SRC = errmsg_bonus.c execute_bonus.c here_doc_bonus.c make_cmd_bonus.c pipex_bonus.c
+BONUS_SRCS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC))
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-all : $(NAME)
+%.o: %.c
+			@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) : $(OBJS) $(LIBFT_OBJS) $(HEADER)
-			@echo "\nCompiling $(NAME)..."
-			@$(CC) $(CCFLAGS) -o $(NAME) $(OBJS) $(LIBFT_OBJS)
-			@echo "$(NAME) compiled!\n"
+all: $(NAME)
 
-%.o : %.c
-			@echo "Compiling $<..."
-			@$(CC) $(CCFLAGS) -c $< -o $@
-			@echo "$< compiled!"
+$(NAME): $(OBJS)
+			@clear
+			@echo ""
+			@echo "           [mandatory]            "
+			@echo ""
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@make re -C ./utils/libft
+			@echo "@                              @"
+			@echo "@         \033[32mHello libft.a\033[0m        @"
+			@$(CC) $(CFLAGS) $(OBJS) ./utils/libft/libft.a -o $(NAME)
+			@echo "@          \033[32mHello pipex\033[0m         @"
+			@echo "@                              @"
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@sleep 2
 
-clean : 
-			@echo "\nRemoving object files..."
-			@rm -f $(OBJS) $(LIBFT_OBJS)
-			@echo "Object files removed!\n"
+bonus: $(BONUS)
 
+$(BONUS): $(BONUS_OBJS)
+			@clear
+			@echo ""
+			@echo "             [bonus]              "
+			@echo ""
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@echo "@                              @"
+			@make re -C ./utils/libft
+			@echo "@         \033[32mHello libft.a\033[0m        @"
+			@make re -C ./utils/get_next_line
+			@echo "@     \033[32mHello get_next_line.a\033[0m    @"
+			@$(CC) $(CFLAGS) $(BONUS_OBJS) ./utils/libft/libft.a ./utils/get_next_line/get_next_line.a  -o $(BONUS)
+			@echo "@       \033[32mHello pipex_bonus\033[0m      @"
+			@echo "@                              @"
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@sleep 2
 
-fclean : clean
-			@echo "\nRemoving $(NAME)..."
-			@rm -f $(NAME)
-			 @echo "$(NAME) removed!\n"
+clean:		
+			@clear
+			@echo ""
+			@echo "             [clean]              "
+			@echo ""
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@make clean -C ./utils/libft
+			@echo "@                              @"
+			@echo "@        \033[31mGoodbye libft.o\033[0m       @"
+			@make clean -C ./utils/get_next_line
+			@echo "@    \033[31mGoodbye get_next_line.o\033[0m   @"
+			@rm -f $(OBJS) $(BONUS_OBJS)
+			@echo "@       \033[31mGoodbye pipex.o\033[0m        @"
+			@echo "@                              @"
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@sleep 2
 
-re : fclean all
-			@echo "\nRecompilation completed!\n"
+fclean: clean
+			@clear
+			@echo ""
+			@echo "             [fclean]             "
+			@echo ""
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@make fclean -C ./utils/libft
+			@echo "@                              @"
+			@echo "@        \033[31mGoodbye libft.a\033[0m       @"
+			@make fclean -C ./utils/get_next_line
+			@echo "@    \033[31mGoodbye get_next_line.a\033[0m   @"
+			@rm -f $(NAME) $(BONUS)
+			@echo "@         \033[31mGoodbye pipex\033[0m        @"
+			@echo "@                              @"
+			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+			@sleep 2
 
-.PHONY : all clean fclean re print
+re: fclean all
+
+re_bonus: fclean bonus
+
+.PHONY: all bonus clean fclean re re_bonus

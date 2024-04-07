@@ -6,11 +6,11 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:07:58 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/06 16:25:36 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/08 01:18:33 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../header/pipex.h"
 
 void	execute_child(int *fd, char *file, char *command, char **envp)
 {
@@ -32,7 +32,7 @@ void	execute_child(int *fd, char *file, char *command, char **envp)
 	dup2(fd[0], 0);
 	close(fd[1]);
 	if ((execve(cmd_path, cmd, NULL)) == -1)
-		error_exit("execve() failed");
+		errmsg_exit("execve() failed : Command not found\n");
 }
 
 void	execute_parent(int *fd, char *file, char *command, char **envp)
@@ -44,10 +44,7 @@ void	execute_parent(int *fd, char *file, char *command, char **envp)
 	
 	infile = open(file, O_RDONLY);
 	if (infile == -1)
-	{
 		perror("open() failed");
-		exit(1);
-	}
 	path = get_path(envp);
 	cmd = ft_split(command, ' ');
 	cmd_path = get_cmd_path(cmd[0], path);
@@ -55,5 +52,5 @@ void	execute_parent(int *fd, char *file, char *command, char **envp)
 	dup2(fd[1], 1);
 	close(fd[0]);
 	if ((execve(cmd_path, cmd, NULL)) == -1)
-		error_exit("execve() failed");
+		errmsg_exit("execve() failed : Command not found\n");
 }
