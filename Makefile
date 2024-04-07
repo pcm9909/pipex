@@ -6,7 +6,7 @@
 #    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 03:15:38 by chunpark          #+#    #+#              #
-#    Updated: 2024/04/08 05:19:21 by chunpark         ###   ########.fr        #
+#    Updated: 2024/04/08 05:27:41 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ all: print $(NAME)
 $(NAME): $(OBJS)
 			@clear
 			@echo ""
-			@echo "           [mandatory]            "
+			@echo "          [ mandatory ]            "
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 			@make re -C ./utils/libft
@@ -49,7 +49,7 @@ bonus: print $(BONUS)
 $(BONUS): $(BONUS_OBJS)
 			@clear
 			@echo ""
-			@echo "             [bonus]              "
+			@echo "            [ bonus ]           "
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 			@echo "@                              @"
@@ -66,7 +66,7 @@ $(BONUS): $(BONUS_OBJS)
 clean:		
 			@clear
 			@echo ""
-			@echo "             [clean]              "
+			@echo "            [ clean ]              "
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 			@make clean -C ./utils/libft
@@ -79,11 +79,12 @@ clean:
 			@echo "@                              @"
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 			@sleep 2
+			@clear
 
 fclean: clean
 			@clear
 			@echo ""
-			@echo "             [fclean]             "
+			@echo "            [ fclean ]             "
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 			@make fclean -C ./utils/libft
@@ -96,6 +97,7 @@ fclean: clean
 			@echo "@                              @"
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 			@sleep 2
+			@clear
 
 re: fclean all
 
@@ -114,6 +116,7 @@ print:
 			@clear
 			@echo "\033[1;33m♪┗(・o･)┓♪\033[0m"
 			@sleep 0.5
+			@clear
 
 
 		
