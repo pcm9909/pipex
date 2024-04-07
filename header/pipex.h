@@ -21,8 +21,8 @@
 # include "../utils/libft/libft.h"
 
 // errmsg.c
-void error_exit(char *msg);
-void errmsg_exit(char *msg);
+void	error_exit(char *msg);
+void	errmsg_exit(char *msg);
 
 // make_cmd.c
 char	*get_path(char **envp);
