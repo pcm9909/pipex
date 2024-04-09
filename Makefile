@@ -6,12 +6,12 @@
 #    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 03:15:38 by chunpark          #+#    #+#              #
-#    Updated: 2024/04/09 19:22:11 by chunpark         ###   ########.fr        #
+#    Updated: 2024/04/09 19:33:05 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = pipex
 DIR = ./mandatory
