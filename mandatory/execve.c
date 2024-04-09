@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:07:58 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/08 01:18:33 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:46:42 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	execute_child(int *fd, char *file, char *command, char **envp)
 	char	**cmd;
 	char	*path;
 	char	*cmd_path;
-	
+
 	outfile = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (outfile == -1)
 	{
@@ -41,7 +41,7 @@ void	execute_parent(int *fd, char *file, char *command, char **envp)
 	char	*path;
 	char	*cmd_path;
 	int		infile;
-	
+
 	infile = open(file, O_RDONLY);
 	if (infile == -1)
 		perror("open() failed");

@@ -21,7 +21,7 @@ void	error_exit(char *msg)
 void	errmsg_command_not_found(char *msg)
 {
 	ft_putstr_fd(msg, 2);
-	ft_putstr_fd(" : Command not found\n",2);
+	ft_putstr_fd(" : Command not found\n", 2);
 	exit(1);
 }
 

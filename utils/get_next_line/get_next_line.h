@@ -6,11 +6,11 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 03:16:19 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/08 03:16:20 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:51:20 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
@@ -25,4 +25,4 @@ char	*handle_newline(char **str, int i);
 char	*ft_return_line(char **str, int ret);
 char	*get_next_line(int fd);
 
-# endif
+#endif

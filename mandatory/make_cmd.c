@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:10:40 by chunpark          #+#    #+#             */
-/*   Updated: 2024/04/08 01:18:37 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:51:18 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ char	*search_path(char *cmd, char *path)
 		i++;
 	}
 	i = 0;
-	while(paths[i])
-		free(paths[i++]);
+	while (paths[i])
+		free (paths[i++]);
 	free(paths);
 	return (cmd_path);
 }

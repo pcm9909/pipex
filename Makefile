@@ -6,12 +6,12 @@
 #    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 03:15:38 by chunpark          #+#    #+#              #
-#    Updated: 2024/04/08 05:27:41 by chunpark         ###   ########.fr        #
+#    Updated: 2024/04/09 19:22:11 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 NAME = pipex
 DIR = ./mandatory
@@ -36,7 +36,7 @@ $(NAME): $(OBJS)
 			@echo "          [ mandatory ]            "
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-			@make re -C ./utils/libft
+			@make re -C ./utils/libft > /dev/null
 			@echo "@                              @"
 			@echo "@         \033[32mHello libft.a\033[0m        @"
 			@$(CC) $(CFLAGS) $(OBJS) ./utils/libft/libft.a -o $(NAME)
@@ -53,9 +53,9 @@ $(BONUS): $(BONUS_OBJS)
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 			@echo "@                              @"
-			@make re -C ./utils/libft
+			@make re -C ./utils/libft > /dev/null
 			@echo "@         \033[32mHello libft.a\033[0m        @"
-			@make re -C ./utils/get_next_line
+			@make re -C ./utils/get_next_line > /dev/null
 			@echo "@     \033[32mHello get_next_line.a\033[0m    @"
 			@$(CC) $(CFLAGS) $(BONUS_OBJS) ./utils/libft/libft.a ./utils/get_next_line/get_next_line.a  -o $(BONUS)
 			@echo "@       \033[32mHello pipex_bonus\033[0m      @"
@@ -69,10 +69,10 @@ clean:
 			@echo "            [ clean ]              "
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-			@make clean -C ./utils/libft
+			@make clean -C ./utils/libft > /dev/null
 			@echo "@                              @"
 			@echo "@        \033[31mGoodbye libft.o\033[0m       @"
-			@make clean -C ./utils/get_next_line
+			@make clean -C ./utils/get_next_line > /dev/null
 			@echo "@    \033[31mGoodbye get_next_line.o\033[0m   @"
 			@rm -f $(OBJS) $(BONUS_OBJS)
 			@echo "@       \033[31mGoodbye pipex.o\033[0m        @"
@@ -87,10 +87,10 @@ fclean: clean
 			@echo "            [ fclean ]             "
 			@echo ""
 			@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-			@make fclean -C ./utils/libft
+			@make fclean -C ./utils/libft > /dev/null
 			@echo "@                              @"
 			@echo "@        \033[31mGoodbye libft.a\033[0m       @"
-			@make fclean -C ./utils/get_next_line
+			@make fclean -C ./utils/get_next_line > /dev/null
 			@echo "@    \033[31mGoodbye get_next_line.a\033[0m   @"
 			@rm -f $(NAME) $(BONUS)
 			@echo "@         \033[31mGoodbye pipex\033[0m        @"
